@@ -1,6 +1,6 @@
 # Aplicación inicial Spring Boot
 
-Aplicación básica usando Spring Boot y plantillas Thymeleaf.
+Aplicación básica usando Spring Boot 3.5.7 y plantillas Thymeleaf.
 
 ## Requisitos
 
