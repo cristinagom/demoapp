@@ -20,6 +20,7 @@ public class SaludoController {
 
     @RequestMapping("/saludo/{nombre}")
     public @ResponseBody String saludo(@PathVariable(value="nombre") String nombre) {
+
         return service.saluda(nombre);
     }
 
