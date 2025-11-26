@@ -1,19 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}"
+          type="text/css">
+</head>
 <body>
 <!--/*@thymesVar id="userData" type="demoapp.controller.UserData"*/-->
 
 <form th:action="@{/saludoform}" th:object="${userData}" method="post">
-    <table>
-        <tr>
-            <td>Nombre:</td>
-            <td><input type="text" th:field="*{nombre}" /></td>
-            <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></td>
-        </tr>
-        <tr>
-            <td><button type="submit">Enviar</button></td>
-        </tr>
-    </table>
+
+    <div class="form-row">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" />
+
+        <div class="error"
+             th:if="${#fields.hasErrors('nombre')}"
+             th:errors="*{nombre}">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" th:field="*{edad}" />
+
+        <div class="error"
+             th:if="${#fields.hasErrors('edad')}"
+             th:errors="*{edad}">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <button type="submit">Enviar</button>
+    </div>
 </form>
 </body>
 </html>
