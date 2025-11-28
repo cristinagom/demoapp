@@ -2,6 +2,7 @@ package demoapp.controller;
 
 import demoapp.dto.UserData;
 import demoapp.service.SaludoService;
+import demoapp.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ public class SaludoControllerForm {
     @Autowired
     private SaludoService service;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/saludoform")
     // Hay que declarar un parámetro con el tipo usado en el modelo del formulario (UserData)
     public String saludoForm(UserData userData) {
@@ -28,6 +32,7 @@ public class SaludoControllerForm {
         if (bindingResult.hasErrors()) {
             return "formRegistro";
         }
+        userService.save(userData.getNombre());
         model.addAttribute("mensaje", service.saluda(userData.getNombre()));
         return "saludo";
     }
